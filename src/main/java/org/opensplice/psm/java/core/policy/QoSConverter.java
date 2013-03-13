@@ -3,10 +3,30 @@ package org.opensplice.psm.java.core.policy;
 
 import org.omg.dds.pub.DataWriterQos;
 import org.omg.dds.sub.DataReaderQos;
+import org.omg.dds.topic.TopicQos;
 import org.opensplice.psm.java.OSPLRuntime;
 import org.opensplice.psm.java.core.TypeConverter;
 import org.opensplice.psm.java.core.policy.PolicyConverter;
 public class QoSConverter {
+	
+	public static DDS.TopicQos convert(TopicQos qos,DDS.TopicQos toQos ) {	
+		toQos.deadline = PolicyConverter.convert(qos.getDeadline());
+		toQos.destination_order = PolicyConverter.convert(qos.getDestinationOrder());
+		toQos.durability = PolicyConverter.convert(qos.getDurability());
+		toQos.history = PolicyConverter.convert(qos.getHistory());
+		toQos.latency_budget = PolicyConverter.convert(qos.getLatencyBudget());
+		toQos.lifespan = PolicyConverter.convert(qos.getLifespan());
+		toQos.liveliness = PolicyConverter.convert(qos.getLiveliness());
+		toQos.ownership = PolicyConverter.convert(qos.getOwnership());
+		toQos.reliability = PolicyConverter.convert(qos.getReliability());
+		toQos.resource_limits = PolicyConverter.convert(qos.getResourceLimits());
+		toQos.transport_priority = PolicyConverter.convert(qos.getTransportPriority());
+		// TODO: Add Convertors
+		//toQos.topic_data = PolicyConverter.convert(qos.getTopicData());
+		//toQos.durability_service = PolicyConverter.convert(qos.getDurabilityService());
+		return toQos;
+	}
+	
     public static DDS.DataReaderQos convert(DataReaderQos qos, DDS.DataReaderQos toQos) {
         toQos.durability = PolicyConverter.convert(qos.getDurability());
         toQos.deadline = PolicyConverter.convert(qos.getDeadline());

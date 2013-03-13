@@ -89,6 +89,10 @@ public class OSPLDataReader<TYPE> implements DataReader<TYPE> {
             MyDataReaderListener mylistener = new MyDataReaderListener(this,
                     thelistener);
             peer.set_listener(mylistener, DDS.ANY_STATUS.value);
+            DataAvailableEvent<TYPE> event =
+                    new OSPLDataAvailableEvent<TYPE>(this);
+            listener.onDataAvailable(event);
+
         }
     }
 

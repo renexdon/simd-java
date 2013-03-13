@@ -128,7 +128,6 @@ public class ReaderQosDialog extends JDialog implements ActionListener {
         return radioButton;
     }
 
-    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand() == "OK") {
             setVisible(false);

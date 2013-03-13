@@ -64,7 +64,7 @@ public class OSPLTopic<TYPE> implements Topic<TYPE> {
         TopicQosHolder holder = new TopicQosHolder();
         participant.getPeer().get_default_topic_qos(holder);
         DDS.TopicQos tqos = holder.value;
-        // TODO: Ensure that the QoS is really taken into account!
+        QoSConverter.convert(qos, tqos);
         this.qos = qos;
         this.typeSupport = registerType();
         this.peer =
